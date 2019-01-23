@@ -7,7 +7,7 @@
         android:id="@+id/tv_ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="13dp"
+        android:layout_margin="3dp"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 </LinearLayout>
