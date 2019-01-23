@@ -48,6 +48,7 @@ public class MainFragment extends Fragment {
         recipeRecyclerView=view.findViewById(R.id.rv_recipe);
         apiInterface = ApiClient.getClient().create(IService.class);
         recipeRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
         getRecipes();
         return view;
     }

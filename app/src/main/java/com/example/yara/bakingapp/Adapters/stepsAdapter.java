@@ -5,21 +5,16 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.yara.bakingapp.Data.Ingredient;
-import com.example.yara.bakingapp.Data.Response;
 import com.example.yara.bakingapp.Data.Step;
 import com.example.yara.bakingapp.DetailsFragment;
 import com.example.yara.bakingapp.R;
-import com.squareup.picasso.Picasso;
+import com.example.yara.bakingapp.VedioFragment;
 
 import java.io.Serializable;
 import java.util.List;
@@ -52,6 +47,19 @@ public class stepsAdapter extends RecyclerView.Adapter<stepsAdapter.stepsViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                VedioFragment fragment = new VedioFragment();
+                FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Bundle bundle=new Bundle();
+                bundle.putString("stepDescription",response.getDescription());
+                bundle.putString("stepURL",response.getVideoURL());
+                bundle.putString("thumbnailUrl",response.getThumbnailURL());
+
+                fragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
             }
         });
